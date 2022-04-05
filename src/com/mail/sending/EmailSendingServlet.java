@@ -1,4 +1,4 @@
-package net.codejava.email;
+package com.mail.sending;
 
 import java.io.IOException;
 import javax.servlet.ServletContext;

@@ -1,4 +1,4 @@
-package net.codejava.email;
+package com.mail.sending;
 
 import java.util.Date;
 import java.util.Properties;
