@@ -10,6 +10,7 @@
         <title>Messagerie GLCL</title>
 <link href="static/css/bootstrap.min.css" rel="stylesheet">
     </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">

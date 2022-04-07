@@ -19,7 +19,7 @@
                 </div>
 
                  <a class="text-center text-uppercase text-white btn btn-primary" class=""href="loginForm">Se connecter</a>
-                 <a class="text-center text-uppercase text-white btn btn-primary" class=""href="registerForm">Nouveau Compte</a>
+                 <a class="text-center text-uppercase text-white btn btn-secondary" class=""href="registerForm">Nouveau Compte</a>
                  
  
   </div>

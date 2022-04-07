@@ -8,10 +8,7 @@
 	<display-name>EmailSendingWebApp</display-name>
 	<welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
-    
   </welcome-file-list>
-	
-
 	<!-- SMTP settings -->
 	<context-param>
 		<param-name>host</param-name>
@@ -32,8 +29,5 @@
 		<param-name>pass</param-name>
 		<param-value>123456</param-value>
 	</context-param>
-	<welcome-file-list>
-		<welcome-file>EmailForm.jsp</welcome-file>
-	</welcome-file-list>
 
 </web-app>

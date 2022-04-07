@@ -13,18 +13,34 @@ import com.mail.metier.IUser;
 public class UserDao implements IUser {
 
 	@Override
-	public boolean saveUser(User user) {
+	public boolean saveUser(User user,String email) {
 		 boolean set = false;
+		 PreparedStatement pstmt1 = null;
+		 PreparedStatement stmt = null;
+		 ResultSet rs = null;
 		try {
-
-            String query = "INSERT INTO usermail VALUES (DEFAULT, ?, ?, ?)";
 			Connection conn = Singleton.getInstance().getConnection();
-			PreparedStatement stmt = conn.prepareStatement(query);
+		    String queryExi = "SELECT email FROM usermail where email=?";
+		    pstmt1 = conn.prepareStatement(queryExi);
+		    pstmt1.setString(1, email);
+
+		    rs = pstmt1.executeQuery();
+		    if(rs.next()) {
+		    	 	            System.out.println("Compte " + email + " existe déjà.");
+		    	 	            
+
+	    }  else {
+	    	System.out.println("Compte " + email + " n\'existe pas.");
+	    	String query = "INSERT INTO usermail VALUES (DEFAULT, ?, ?, ?)";
+			stmt = conn.prepareStatement(query);
 			stmt.setString(1, user.getName());
 			stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getPassword());
             stmt.executeUpdate();
             set=true;
+	    }
+			
+           
             
 			
 		} catch (SQLException ex) {
@@ -50,6 +66,7 @@ public User logUser(String email, String password) {
             user.setEmail(rs.getString("email"));
             user.setPassword(rs.getString("password"));
        }
+        
         
 		
 	} catch (SQLException ex) {

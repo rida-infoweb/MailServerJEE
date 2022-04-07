@@ -46,8 +46,22 @@ public class RegisterServlet extends HttpServlet {
 			User user = new User(name,email,password);
 			
 			IUser service = new UserDao();
-			response.sendRedirect("emailForm");
-			service.saveUser(user);
+			if (service.saveUser(user,email)==true) {
+			service.saveUser(user,email);
+			PrintWriter out = response.getWriter() ;
+
+			out.println("<script type=\"text/javascript\">");
+            out.println("alert('Ce compte est créé avec succès !');");
+            out.println("window.location.href = \"loginForm\";");
+            out.println("</script>");
+			}
+			else {
+				PrintWriter out = response.getWriter() ;
+				out.println("<script type=\"text/javascript\">");
+	            out.println("alert('Ce compte existe déjà !');");
+	            out.println("window.location.href = \"registerForm\";");
+	            out.println("</script>");	
+			}
 		}
 	
     @Override

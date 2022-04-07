@@ -2,9 +2,11 @@
                 <h4 class="text-center text-danger mt-5" id ="text_champ_oblig"></h4>
                 <h4 class="text-center text-danger mt-5" id ="text_pass"></h4>
                 <h4 class="text-center text-danger mt-5" id ="text_email"></h4>
+   
 
                 <div class="form-group row">
   </div>
+  
   <div class="form-group row">
     <label for="email" class="col-sm-4 col-form-label font-weight-bold ">Email</label>
     <div class="col-sm-8">
