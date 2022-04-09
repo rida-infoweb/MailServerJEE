@@ -47,9 +47,11 @@ public class SshCommand {
 			/* Create a session */
 
 			Session sess = conn.openSession();
-			String commande = "useradd "+user+" -p "+pass;
+			//String commandeHome = "sudo chmod 755 /home/"+user;
+			String commande ="useradd "+user+" && echo "+user+":"+pass+" | chpasswd -c SHA512";
 
 			sess.execCommand(commande);
+
 			//sess.execCommand("uname -a && date && uptime && who");
 
 			System.out.println(commande);

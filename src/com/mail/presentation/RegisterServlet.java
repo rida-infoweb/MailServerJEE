@@ -59,7 +59,7 @@ public class RegisterServlet extends HttpServlet {
             out.println("</script>");
            
 
-            SshCommand.CreationCompteLinux(email.split("@")[0], password);
+            SshCommand.CreationCompteLinux(email.split("@")[0],password);
 			}
 			else {
 				PrintWriter out = response.getWriter() ;
