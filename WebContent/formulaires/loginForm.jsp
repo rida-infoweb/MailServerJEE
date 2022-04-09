@@ -1,6 +1,5 @@
 <form name="form" action="login" method="post"  onsubmit="return validateForm()">
                 <h4 class="text-center text-danger mt-5" id ="text_champ_oblig"></h4>
-                <h4 class="text-center text-danger mt-5" id ="text_pass"></h4>
                 <h4 class="text-center text-danger mt-5" id ="text_email"></h4>
    
 

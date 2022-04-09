@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="com.mail.entities.User"%>
+    
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,35 +14,47 @@
     </head>
 
 <body>
- <% 
-request.getSession(true);
-if (session == null) { %>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <h2 class="page-section-heading text-center text-uppercase">Messagerie électronique</h2>
-                    <div class="row text-center">
-                    <div class="col-lg-10 ms-auto"><p class="lead">Vous devez vous connecter !</p></div>
-                </div>       
-  </div>
-</nav>
-  <% 
-} else {
-    // Already created.
-    %>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <h2 class="page-section-heading text-center text-uppercase">Messagerie électronique</h2>
-                    <div class="row text-center">
-                    <div class="col-lg-10 ms-auto"><p class="lead">Messagerie électronique des étudiants du Master Génie Logiciel pour le Cloud</p></div>
+<%
+//allow access only if session exists
+User user = (User) session.getAttribute("user");
+String userName = null;
+String sessionID = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+}
+}
+%>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+<h2 class="page-section-heading text-center text-uppercase">Messagerie électronique</h2>
+                 <div class="row text-center">
+                 <div class="col-lg-10 ms-auto"><p class="lead">Messagerie électronique des étudiants du Master Génie Logiciel pour le Cloud</p></div>
                 </div>       
   </div>
 </nav>
  <section class="page-section mt-5" >
             <div class="container">
+               <div class="row mt-2">
+  <table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Bonjour Mr <%=user.getName()%></th>
+      <th><%=userName %></th>
+    </tr>
+  </thead>
+</table> 
+ </div>
            <div class="container">
   <div class="row">
     <div class="col-sm">
-      <a class="text-center text-uppercase text-white btn btn-danger" class=""href="#">Se déconnecter</a>
+    <form action="LogoutServlet" method="post">
+<input type="submit" value="Se déconnecter" class="text-center text-uppercase text-white btn btn-danger" >
+</form>
     </div>
     <div class="col-sm">
       <a class="text-center text-uppercase text-white btn btn-success" class=""href="#">Messages reçus</a>
@@ -49,7 +63,10 @@ if (session == null) { %>
       <a class="text-center text-uppercase text-white btn btn-warning" class=""href="#">Messages envoyés</a>
     </div>
   </div>
+ 
 </div> 
+
+
                 <!-- Contact Section Heading-->
                 <h2 class="text-center text-uppercase text-secondary mt-5">Nouveau message</h2>
 
@@ -64,15 +81,9 @@ if (session == null) { %>
                     </div>
                 </div>
             </div>
-        </section>
-<% 
-}
-
-%>
-  
+        </section>  
          
        
-<script src="static/loginForm.js"></script>
 
 </body>
 </html>

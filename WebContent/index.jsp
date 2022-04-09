@@ -18,13 +18,30 @@
                     <div class="col-lg-10 ms-auto"><p class="lead">Messagerie électronique des étudiants du Master Génie Logiciel pour le Cloud</p></div>
                 </div>
 
-                 <a class="text-center text-uppercase text-white btn btn-primary" class=""href="loginForm">Se connecter</a>
-                 <a class="text-center text-uppercase text-white btn btn-secondary" class=""href="registerForm">Nouveau Compte</a>
                  
  
   </div>
 </nav>
-        
+
+        <section class="page-section mt-5" >
+            <div class="container">
+                <!-- Contact Section Heading-->
+                <h2 class="text-center text-uppercase text-secondary mt-5">Accès</h2>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-xl-4">
+
+
+
+                 <a class="text-center text-uppercase text-white btn btn-primary" class=""href="loginForm">Se connecter</a>
+                 <a class="text-center text-uppercase text-white btn btn-secondary" class=""href="registerForm">Nouveau Compte</a>
+
+
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
         
         
 <script src="static/js/bootstrap.bundle.min.js"></script>
