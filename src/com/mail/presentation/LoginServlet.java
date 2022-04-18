@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -30,8 +31,12 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  
+		
+		
 		String email = request.getParameter("email");
 		String password =request.getParameter("password");
+
 	
 			IUser service = new UserDao();
 			    User user = service.logUser(email, SHA6Encryption.getSHA6(password));
@@ -39,6 +44,9 @@ public class LoginServlet extends HttpServlet {
 	            if (user != null) {
 	            	HttpSession session = request.getSession();
 	    			session.setAttribute("user", user);
+	    			session.setAttribute("password", password);
+	    			session.setAttribute("email", email);
+
 	    			session.setMaxInactiveInterval(30*60);
 	    			Cookie userName = new Cookie("user", email);
 	    			userName.setMaxAge(30*60);
@@ -53,6 +61,7 @@ public class LoginServlet extends HttpServlet {
 		            out.println("window.location.href = \"loginForm\";");
 		            out.println("</script>");	
 	            }
+
 	             
 		}
 

@@ -1,12 +1,15 @@
 package com.mail.sending;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * A servlet that takes message details from user and send it as a new e-mail
@@ -17,40 +20,37 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/EmailSendingServlet")
 public class EmailSendingServlet extends HttpServlet {
-	private String host;
-	private String port;
-	private String user;
-	private String pass;
 
-	public void init() {
-		// reads SMTP server setting from web.xml file
-		ServletContext context = getServletContext();
-		host = context.getInitParameter("host");
-		port = context.getInitParameter("port");
-		user = context.getInitParameter("user");
-		pass = context.getInitParameter("pass");
-	}
-
+	private static final long serialVersionUID = 1L;
+	private String host ="192.168.56.128";
+	private String port="25";
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// reads form fields
+		HttpSession session=request.getSession();
+		String user=(String)session.getAttribute("email");
+		String pass=(String)session.getAttribute("password");
+		
 		String recipient = request.getParameter("recipient");
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 
-		String resultMessage = "";
 
 		try {
-			EmailUtility.sendEmail("192.168.56.128", port, user, pass, recipient, subject,
+			EmailUtility.sendEmail(host, port, user, pass, recipient, subject,
 					content);
-			resultMessage = "The e-mail was sent successfully";
-		} catch (Exception ex) {
+			PrintWriter out = response.getWriter() ;
+			out.println("<script type=\"text/javascript\">");
+            out.println("alert('Email envoyé avec succès !');");
+            out.println("window.location.href = \"MsgEnvoyesServlet\";");
+            out.println("</script>");		
+            } catch (Exception ex) {
 			ex.printStackTrace();
-			resultMessage = "There were an error: " + ex.getMessage();
-		} finally {
-			request.setAttribute("Message", resultMessage);
-			getServletContext().getRequestDispatcher("/Result.jsp").forward(
-					request, response);
-		}
+			PrintWriter out = response.getWriter() ;
+			out.println("<script type=\"text/javascript\">");
+            out.println("alert('Email non envoyé !');");
+            out.println("window.location.href = \"emailForm\";");
+            out.println("</script>");		} 
+	
 	}
 }

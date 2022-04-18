@@ -25,7 +25,7 @@ public class FrontEndAuthenticationFilter implements Filter {
     private HttpServletRequest httpRequest;
  
     private static final String[] loginRequiredURLs = {
-            "/emailForm", "/EmailSendingServlet", 
+            "/emailForm", "/EmailSendingServlet", "/MsgEnvoyesServlet"
     };
  
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

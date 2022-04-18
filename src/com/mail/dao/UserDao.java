@@ -22,12 +22,9 @@ public class UserDao implements IUser {
 		    pstmt1.setString(1, email);
 
 		    rs = pstmt1.executeQuery();
-		    if(rs.next()) {
-		    	 	            System.out.println("Compte " + email + " existe déjà.");
-		    	 	            
+		    if(!rs.next()) 	            
 
-	    }  else {
-	    	System.out.println("Compte " + email + " n\'existe pas.");
+	      {
 	    	String query = "INSERT INTO usermail VALUES (DEFAULT, ?, ?, ?)";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, user.getName());

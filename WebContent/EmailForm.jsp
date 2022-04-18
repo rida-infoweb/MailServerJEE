@@ -40,7 +40,7 @@ for(Cookie cookie : cookies){
  <section class="page-section mt-5" >
             <div class="container">
                <div class="row mt-2">
-  <table class="table table-dark">
+  <table class="table table-secondary">
   <thead>
     <tr>
       <th>Bonjour Mr <%=user.getName()%></th>
@@ -57,10 +57,10 @@ for(Cookie cookie : cookies){
 </form>
     </div>
     <div class="col-sm">
-      <a class="text-center text-uppercase text-white btn btn-success" class=""href="#">Messages reçus</a>
+      <a class="text-center text-uppercase text-white btn btn-success" class=""href="ShowReceivingMail">Messages reçus</a>
     </div>
     <div class="col-sm">
-      <a class="text-center text-uppercase text-white btn btn-warning" class=""href="#">Messages envoyés</a>
+      <a class="text-center text-uppercase text-white btn btn-warning" class=""href="MsgEnvoyesServlet">Messages envoyés</a>
     </div>
   </div>
  
