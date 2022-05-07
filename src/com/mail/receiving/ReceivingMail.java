@@ -34,7 +34,7 @@ public class ReceivingMail {
             Store store = session.getStore("pop3");
             store.connect(SMTP_HOST,user.split("@")[0],pass);
             Folder folder = store.getFolder("inbox");
-
+            
             folder.open(Folder.READ_WRITE);
             Message[] messages = folder.getMessages();
 
@@ -43,7 +43,7 @@ public class ReceivingMail {
                 Email email = new Email();
                 email.setMessage((String) message.getContent());
                 email.setFrom(message.getFrom()[0].toString());
-                email.setObjet(message.getSubject());
+                email.setSubject(message.getSubject());
                 email.setCreatedAt(message.getSentDate());
                 email.setUuid(pf.getUID(message));
                 emails.add(email);

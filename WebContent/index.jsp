@@ -9,6 +9,7 @@
         <meta name="author" content="" />
         <title>Messagerie GLCL</title>
 <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
     </head>
     <body >
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,7 +27,7 @@
         <section class="page-section mt-5" >
             <div class="container">
                 <!-- Contact Section Heading-->
-                <h2 class="text-center text-uppercase text-secondary mt-5">Accès</h2>
+                <h1 class="text-center text-uppercase text-white mt-5"><span class="badge bg-secondary">Accès</span></h1>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-12 col-xl-12">
@@ -35,8 +36,10 @@
     <div class="card">
   <div class="card-body">
     <h5 class="card-title">Déjà inscrit !</h5>
-    <p class="card-text">Veuillez accèder par ici </p>
-                 <a class="text-center text-uppercase text-white btn btn-primary" class=""href="loginForm">Se connecter</a>
+    <p class="card-text">
+    <a class="text-center text-uppercase text-white btn btn-primary" class=""href="loginForm">Se connecter</a>
+    </p>
+                 
   </div>
     </div>
   </div>
@@ -44,8 +47,7 @@
     <div class="card">
   <div class="card-body">
     <h5 class="card-title">Nouvel inscrit !</h5>
-    <p class="card-text">Veuillez accèder par ici </p>
-                 <a class="text-center text-uppercase text-white btn btn-secondary" class=""href="registerForm">Nouveau Compte</a>
+    <p class="card-text"><a class="text-center text-uppercase text-white btn btn-secondary" class=""href="registerForm">Nouveau compte</a></p>
   </div>
     </div>
   </div>

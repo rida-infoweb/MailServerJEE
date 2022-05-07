@@ -42,7 +42,6 @@ for(Cookie cookie : cookies){
             <div class="card">
   <div class="card-header">
     Bonjour Mr/Mme <%=user.getName()%> - <%=userName %> -
-    <a class="text-center text-uppercase text-white btn btn-primary" class=""href="UpdateUserFormServlet?id=<%=user.getId() %>">Profil</a>
   </div>
   <div class="card-body">
     <div class="row">
@@ -50,6 +49,9 @@ for(Cookie cookie : cookies){
     <form action="LogoutServlet" method="post">
 <input type="submit" value="Se déconnecter" class="text-center text-uppercase text-white btn btn-danger" >
 </form>
+    </div>
+        <div class="col-sm">
+      <a class="text-center text-uppercase text-white btn btn-success" class=""href="emailForm">Nouveau Message</a>
     </div>
     <div class="col-sm">
       <a class="text-center text-uppercase text-white btn btn-success" class=""href="Inbox">Messages reçus</a>
@@ -65,13 +67,13 @@ for(Cookie cookie : cookies){
 
 
                 <!-- Contact Section Heading-->
-                <h1 class="text-center text-uppercase text-white mt-2"><span class="badge bg-secondary">Nouveau message</span></h1>
+                <h1 class="text-center text-uppercase text-white mt-2"><span class="badge bg-secondary">Profil</span></h1>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-12 col-xl-12">
 
 
-        <%@include file="formulaires/EmailForm.jsp" %>
+        <%@include file="formulaires/modifierUserForm.jsp" %>
 
 
                        
@@ -79,7 +81,7 @@ for(Cookie cookie : cookies){
                 </div>
             </div>
         </section>  
-         <script src="static/emailForm.js"></script>
+         <script src="static/modifierUserForm.js"></script>
          
        
 

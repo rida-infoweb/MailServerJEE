@@ -22,8 +22,10 @@
          
         <section class="page-section mt-5" >
             <div class="container">
+                <a class="text-center text-uppercase text-white btn btn-primary" class=""href="/EmailSendingWebApp">Acceuil</a>
+            
                 <!-- Contact Section Heading-->
-                <h2 class="text-center text-uppercase text-secondary mt-5">Nouveau compte</h2>
+                <h1 class="text-center text-uppercase text-white mt-5"><span class="badge bg-secondary">Nouveau compte</span></h1>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-12 col-xl-12">

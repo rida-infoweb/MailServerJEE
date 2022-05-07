@@ -25,14 +25,14 @@ public class FrontEndAuthenticationFilter implements Filter {
     private HttpServletRequest httpRequest;
  
     private static final String[] loginRequiredURLs = {
-            "/emailForm", "/EmailSendingServlet", "/MsgEnvoyesServlet"
+            "/emailForm", "/EmailSendingServlet", "/Sent","/Inbox","/DeleteUserConfServlet","/DeleteUserServlet","/ListUserServlet","/UpdateUserFormServlet","UpdateUserServlet"
     };
  
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         httpRequest = (HttpServletRequest) request;
  
-        String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
+        
  
 //        if (path.startsWith("/admin/")) {
 //            chain.doFilter(request, response);

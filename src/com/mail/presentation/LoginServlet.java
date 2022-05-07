@@ -3,8 +3,6 @@ package com.mail.presentation;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -46,14 +44,23 @@ public class LoginServlet extends HttpServlet {
 	    			session.setAttribute("user", user);
 	    			session.setAttribute("password", password);
 	    			session.setAttribute("email", email);
-
+	    			if (email.equals("admin@rida.ma")) {
+		    			session.setMaxInactiveInterval(30*60);
+		    			Cookie userName = new Cookie("user", email);
+		    			userName.setMaxAge(30*60);
+		    			response.addCookie(userName);
+//		    		
+		    			response.sendRedirect("ListUserServlet");
+						
+					} else {
 	    			session.setMaxInactiveInterval(30*60);
 	    			Cookie userName = new Cookie("user", email);
 	    			userName.setMaxAge(30*60);
 	    			response.addCookie(userName);
 //	    		
 	    			response.sendRedirect("emailForm");
-	            } else {
+	            } 
+	            }else {
 
 					PrintWriter out = response.getWriter() ;
 					out.println("<script type=\"text/javascript\">");

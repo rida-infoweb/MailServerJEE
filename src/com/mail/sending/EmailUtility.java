@@ -2,7 +2,6 @@ package com.mail.sending;
 
 import java.util.Date;
 import java.util.Properties;
-import javax.activation.*;  
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;

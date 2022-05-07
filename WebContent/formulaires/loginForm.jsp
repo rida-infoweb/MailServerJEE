@@ -7,14 +7,14 @@
   </div>
   
   <div class="form-group row">
-    <label for="email" class="col-sm-4 col-form-label font-weight-bold ">Email</label>
+    <label for="email" class="col-sm-4 col-form-label font-weight-bold ">Email :</label>
     <div class="col-sm-8">
       <input type="text" name="email" class="form-control" id="email" placeholder="xxxx@rida.ma">
 
     </div>
   </div>
   <div class="form-group row">
-    <label for="password" class="col-sm-4 col-form-label font-weight-bold">Mot de passe</label>
+    <label for="password" class="col-sm-4 col-form-label font-weight-bold">Mot de passe :</label>
     <div class="col-sm-8">
       <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
 

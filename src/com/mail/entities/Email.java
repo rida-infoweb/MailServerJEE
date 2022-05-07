@@ -4,23 +4,35 @@ import java.util.Date;
 
 public class Email {
     private String uuid;
+    private int id;
     private String from;
     private String to;
     private String message;
-    private String objet;
+    private String subject;
     private Date createdAt;
     public Email(){
 
     }
-    public Email(String from, String to, String message, String objet, Date createdAt) {
+    public Email(int id,String from, String to, String message, String subject, Date createdAt) {
+    	this.id=id;
         this.from = from;
         this.to = to;
         this.message = message;
-        this.objet = objet;
+        this.subject = subject;
         this.createdAt = createdAt;
     }
 
-    public String getFrom() {
+    public Email(String uuid, int id, String from, String to, String message, String subject, Date createdAt) {
+		super();
+		this.uuid = uuid;
+		this.id = id;
+		this.from = from;
+		this.to = to;
+		this.message = message;
+		this.subject = subject;
+		this.createdAt = createdAt;
+	}
+	public String getFrom() {
         return from;
     }
 
@@ -44,12 +56,12 @@ public class Email {
         this.message = message;
     }
 
-    public String getObjet() {
-        return objet;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setObjet(String objet) {
-        this.objet = objet;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public Date getCreatedAt() {
@@ -67,4 +79,13 @@ public class Email {
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

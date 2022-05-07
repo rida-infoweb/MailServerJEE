@@ -1,9 +1,6 @@
-package com.mail.receiving;
+package com.mail.presentation;
 
 import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,19 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mail.entities.Email;
+import com.mail.dao.UserDao;
+import com.mail.metier.IUser;
+import com.mail.ssh.SshCommand;
 
 /**
- * Servlet implementation class ShowReceivingMail
+ * Servlet implementation class DeleteUserConfServlet
  */
-@WebServlet("/Inbox")
-public class ShowReceivingMail extends HttpServlet {
+@WebServlet("/DeleteUserConfServlet")
+public class DeleteUserConfServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowReceivingMail() {
+    public DeleteUserConfServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +31,19 @@ public class ShowReceivingMail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session=request.getSession();
 
-		String user=(String)session.getAttribute("email");
-		String pass=(String)session.getAttribute("password");
-        List<Email> emails = ReceivingMail.receiving(user, pass);
-		request.setAttribute("emails", emails);
-		RequestDispatcher rd = request.getRequestDispatcher("MessagesRecus.jsp");
-		rd.forward(request, response);
-	}
+		String email=(String)session.getAttribute("email");
+
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		IUser service = new UserDao();
+		
+        SshCommand.SuppressionCompteLinux(service.findOne(id).getEmail().split("@")[0]);
+
+		service.delete(id);
+		
+		response.sendRedirect("ListUserServlet");	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
